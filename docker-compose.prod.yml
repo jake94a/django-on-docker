@@ -3,13 +3,13 @@ version: "3.7"
 services:
   web:
     build:
-      context: .
+      context: ./app
       dockerfile: Dockerfile.prod
     command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
     expose:
       - 8000
     env_file:
-      - ./hello_django/.env.prod
+      - ./.env.prod
     depends_on:
       - db
 
@@ -18,7 +18,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./hello_django/.env.prod.db
+      - ./.env.prod.db
 
   nginx:
     build: ./nginx

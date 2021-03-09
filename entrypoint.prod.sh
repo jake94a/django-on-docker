@@ -11,8 +11,4 @@ then
     echo "PostgreSQL started"
 fi
 
-# see readme for these commands when docker containers are up
-# python manage.py flush --no-input
-# python manage.py migrate
-
 exec "$@"
